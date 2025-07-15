@@ -1,7 +1,7 @@
 import { join } from 'path';
 import fs from 'fs-extra';
 
-import { tsconfig } from './tsconfig';
+import { tsconfig } from './createTsconfig';
 
 interface SelizeFileConfig {
   path: string;
