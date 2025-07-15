@@ -3,7 +3,7 @@ import fs from 'fs-extra';
 
 import { tsconfig } from './createTsconfig';
 
-interface SelizeFileConfig {
+export interface SelizeFileConfig {
   path: string;
   handler?: (fullPath: string) => Promise<void>;
 }
@@ -14,6 +14,9 @@ export const selizeFiles = async (): Promise<void> => {
       path: '.selize/tsconfig.json',
       handler: tsconfig
     },
+    {
+      path: 'selize.config.ts',
+    }
   ];
 
   for (const file of filesList) {
