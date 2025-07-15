@@ -3,7 +3,7 @@ import fg from "fast-glob";
 import { rm } from 'node:fs/promises';
 
 const cleanDist = async (config: { outDir: string }) => {
-  const { outDir = 'lib' } = config;
+  const { outDir } = config;
 
   const files = await fg([`${outDir}/**/*`, `${outDir}/**/.*`], {
     onlyFiles: false,
@@ -19,7 +19,7 @@ const cleanDist = async (config: { outDir: string }) => {
 }
 
 const bunBuild = async (config: { outDir: string }) => {
-  const { outDir = 'lib' } = config;
+  const { outDir } = config;
 
   const entryPoints = fg.sync([
     "src/**/*.ts",
@@ -42,16 +42,16 @@ const bunBuild = async (config: { outDir: string }) => {
     outdir: outDir,
     naming: "[dir]/[name].[ext]",
     minify: false,
-    splitting: true,
+    splitting: false,
     target: "node",
     format: "esm",
     sourcemap: "none",
   });
 
   if (result.success) {
-    console.log("bun build successful");
+    console.log("Bun build successful");
   } else {
-    console.error("bun build failed");
+    console.error("Bun build failed");
     for (const message of result.logs) {
       console.error(message);
     }
@@ -61,7 +61,6 @@ const bunBuild = async (config: { outDir: string }) => {
 const main = async (outDir: string) => {
   await cleanDist({ outDir });
   await bunBuild({ outDir })
-
 };
 
 main("lib").catch(error => {
