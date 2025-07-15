@@ -8,6 +8,7 @@
     "Snroe",
     "selize"
   ],
+  "homepage": "https://github.com/snroe/selize-files#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/snroe/selize-files.git"
@@ -22,8 +23,6 @@
     "check": "tsc --noEmit",
     "clean": "rimraf lib node_modules/.tmp",
     "test": "bun run check && bun test --dir __tests__",
-    "docs:html": "bun run -c=bunfig.toml docs.ts",
-    "docs:md": "typedoc --excludePrivate false --githubPages --gitRevision main --plugin typedoc-plugin-markdown --out docs src",
     "publish": "npm publish --access public",
     "prepare": "husky",
     "commit": "commit"
@@ -43,11 +42,7 @@
     "@commitlint/prompt-cli": "^19.8.1",
     "@types/bun": "^1.2.18",
     "@types/fs-extra": "^11.0.4",
-    "cheerio": "^1.1.0",
-    "husky": "^9.1.7",
-    "typedoc": "^0.28.7",
-    "typedoc-plugin-markdown": "^4.7.0",
-    "xmlbuilder2": "^3.1.1"
+    "husky": "^9.1.7"
   },
   "peerDependencies": {
     "typescript": "^5.8.3"
